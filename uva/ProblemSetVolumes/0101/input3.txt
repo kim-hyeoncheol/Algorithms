@@ -1,0 +1,5 @@
+4
+move 1 over 0
+move 2 over 0
+move 1 over 3
+quit

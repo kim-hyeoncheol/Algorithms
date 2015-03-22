@@ -1,0 +1,6 @@
+5
+pile 1 over 0
+pile 2 over 0
+pile 0 over 3
+pile 0 over 4
+quit
