@@ -3,4 +3,11 @@
 *.class
 a.out
 *.bin
+
+# Temporary File #
+##################
+*.swp
+*.swo
 tmp.*
+
+
