@@ -9,5 +9,6 @@ a.out
 *.swp
 *.swo
 tmp.*
+output.actual.txt
 
 
