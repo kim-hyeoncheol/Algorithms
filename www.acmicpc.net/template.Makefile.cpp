@@ -5,7 +5,7 @@ CFLAG = -Wall -O2 -std=c++11 -pipe -DONLINE_JUDGE
 #LFLAG = -lm -lcrypt
 LFLAG = -lm
 
-TARGET = Main
+TARGET = main
 BIN = $(TARGET).bin
 SRC = $(TARGET).cpp
 INPUT = input.txt
