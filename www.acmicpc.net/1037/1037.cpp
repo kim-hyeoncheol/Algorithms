@@ -1,3 +1,8 @@
+/*
+ * 1037 - 약수
+ * https://www.acmicpc.net/problem/1037
+ * Run Time : 
+ */
 #include <iostream>
 
 using namespace std;

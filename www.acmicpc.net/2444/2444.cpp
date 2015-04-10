@@ -1,3 +1,8 @@
+/*
+ * 2444 - 별찍기 - 7
+ * https://www.acmicpc.net/problem/2444
+ * Run Time : 
+ */
 #include <iostream>
 
 using namespace std;

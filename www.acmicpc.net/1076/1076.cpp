@@ -1,3 +1,8 @@
+/*
+ * 1076 - 저항
+ * https://www.acmicpc.net/problem/1076
+ * Run Time : 
+ */
 #include <iostream>
 #include <iomanip>
 #include <cmath>

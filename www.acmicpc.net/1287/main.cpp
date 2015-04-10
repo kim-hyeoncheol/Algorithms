@@ -1,7 +1,7 @@
 /*
- * 2750 - 
- * https://www.acmicpc.net/problem/2750
- * Run Time : 
+ * 1287 - 할 수 있다
+ * https://www.acmicpc.net/problem/1287
+ * Run Time : RunTime Error (긴 숫자 입력시 에러남.)
  */
 #include <iostream>
 #include <string>

@@ -1,7 +1,6 @@
 /*
- * 2750 - 
- * https://www.acmicpc.net/problem/2750
- * Run Time : 
+ * 1377 - 버블 소트 (문제에서 제시한 코드.)
+ * https://www.acmicpc.net/problem/1377
  */
 #include <iostream>
 #include <map>

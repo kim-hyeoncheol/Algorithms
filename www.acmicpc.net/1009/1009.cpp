@@ -1,3 +1,8 @@
+/*
+ * 1009 - 분산처리
+ * https://www.acmicpc.net/problem/1009
+ * Run Time : 
+ */
 #include <iostream>
 
 using namespace std;

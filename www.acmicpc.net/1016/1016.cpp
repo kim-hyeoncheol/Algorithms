@@ -1,3 +1,10 @@
+/*
+ * 1016 - 제곱 ㄴㄴ 수
+ * https://www.acmicpc.net/problem/1016
+ * Run Time : 
+ * 아직 안 푼 문제임.
+ */
+
 #include <iostream>
 #include <iomanip>
 #include <cmath>

@@ -1,3 +1,8 @@
+/*
+ * 1032 - 명령 프롬프트
+ * https://www.acmicpc.net/problem/1032
+ * Run Time : 
+ */
 #include <iostream>
 
 using namespace std;

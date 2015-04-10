@@ -1,3 +1,8 @@
+/*
+ * 1004 - 어린 왕자
+ * https://www.acmicpc.net/problem/1004
+ * Run Time : 
+ */
 #include <iostream>
 
 using namespace std;

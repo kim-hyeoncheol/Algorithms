@@ -1,3 +1,8 @@
+/*
+ * 1075 - 나누기
+ * https://www.acmicpc.net/problem/1075
+ * Run Time : 
+ */
 #include <iostream>
 
 using namespace std;

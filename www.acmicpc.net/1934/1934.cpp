@@ -1,3 +1,8 @@
+/*
+ * 1934 - 최소공배수
+ * https://www.acmicpc.net/problem/1934
+ * Run Time : 
+ */
 #include <iostream>
 
 using namespace std;

@@ -1,3 +1,8 @@
+/*
+ * 1005 - ACM Craft
+ * https://www.acmicpc.net/problem/1005
+ * Run Time : 
+ */
 #include <iostream>
 
 using namespace std;
