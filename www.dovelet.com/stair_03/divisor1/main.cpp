@@ -1,6 +1,9 @@
 /*
  * http://183.106.113.109/30stair/divisor1/divisor1.php?pname=divisor1
  * Run Time : 
+ * 약수가 홀수개면, 완전제곱수.
+ * (a + b) % d == ((a % d) + (b % d)) % d
+ * (a * b) % d == ((a % d) * (b % d)) % d
  */
 #include <iostream>
 #include <cmath>
