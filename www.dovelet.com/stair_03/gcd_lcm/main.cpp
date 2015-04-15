@@ -13,9 +13,11 @@ int get_gcd(int a, int b) {
 }
 
 int main(int argc, char* argv[]) {
-    int a, b;
+    int a, b, gcd, lcm;
     while (cin >> a >> b) {
-        cout << get_gcd(a, b) << " " << a * b / get_gcd(a, b) << endl;
+		gcd = get_gcd(a, b);
+		lcm = a * b / gcd;
+        cout << gcd << " " << lcm << endl;
     }
     return 0;
 }
