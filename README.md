@@ -3,7 +3,7 @@ Algorithms
 
 migom's algorithms exercises
 
-MIT 알고리즘 강의
+알고리즘 강의
 ==========
 
 0. http://www.snow.or.kr/lecture/applied_sciences/computer_science/532.html
