@@ -1,0 +1,67 @@
+$ time ./main.bin < input_final.txt 
+18
+858200
+104116050
+10427260000
+262134300000
+
+real	0m0.024s
+user	0m0.018s
+sys	0m0.004s
+
+$ time ./main.bin < input.txt 
+18
+858200
+104116050
+
+real	0m0.005s
+user	0m0.002s
+sys	0m0.002s
+
+===============================================================
+
+$ time ./main_v6 < input.txt 
+18
+858200
+104116050
+
+real	0m0.009s
+user	0m0.005s
+sys	0m0.002s
+
+$ time ./main_v5 < input.txt 
+18
+858200
+104116050
+
+real	0m0.123s
+user	0m0.118s
+sys	0m0.003s
+
+$ time ./main_v4 < input.txt 
+18
+858200
+104116050
+
+real	0m0.167s
+user	0m0.161s
+sys	0m0.004s
+
+$ time ./main_v3 < input.txt 
+18
+858200
+104116050
+
+real	0m0.166s
+user	0m0.160s
+sys	0m0.004s
+
+$ time ./main_v2 < input.txt 
+18
+858200
+103626000
+
+real	0m35.616s
+user	0m35.502s
+sys	0m0.089s
+
