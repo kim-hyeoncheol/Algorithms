@@ -3,7 +3,7 @@
  */
 import java.math.BigInteger;
 
-public class BinIntegerUsage {
+public class BigIntegerUsage {
 
     public static void main(String[] args) {
 		BigInteger	a = new BigInteger("1234567890123456789012345678901234567890");
