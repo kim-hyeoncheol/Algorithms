@@ -17,19 +17,20 @@ int strcmp(const char *s1, const char *s2)
     return (*(const unsigned char *)s1 - *(const unsigned char *)(s2 - 1));
 }
 
-void qsort (void *base,size_t nmemb,size_t size,int (*compar)(const void *,const void *))
+void qsort (void *base, size_t nmemb, size_t size, int (*compar)(const void *, const void *))
 {
     char *base2 = (char *)base;
     size_t i, a, b, c;
-    while (nmemb > 1) {
+    while (nmemb > 1)
+    {
         a = 0;
         b = nmemb - 1;
         c = (a + b) / 2; /* Middle element */
         for(;;)
         {
-            while((*compar)(&base2[size*c],&base2[size*a])>0) 
+            while((*compar)(&base2[size * c], &base2[size * a]) > 0) 
             a++; /* Look for one >= middle */
-            while((*compar)(&base2[size*c],&base2[size*b])<0) 
+            while((*compar)(&base2[size * c], &base2[size * b]) < 0) 
                 b--; /* Look for one <= middle */
             if(a >= b)
                 break; /* We found no pair */
@@ -81,17 +82,12 @@ int main(int argc, char* argv[])
         else
         {
             intersection[count] = i;
-            i++;
-            j++;
-            count++;
+            i++, j++, count++;
         }
     }
     printf("%d\n", count);
     for (i = 0; i < count; i++)
-    {
-        j = intersection[i];
-        printf("%s\n", A[j]);
-    }
+        printf("%s\n", A[intersection[i]]);
     return 0;
 }
 
