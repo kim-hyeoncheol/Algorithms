@@ -34,7 +34,7 @@ void qsort (void *base, size_t nmemb, size_t size, int (*compar)(const void *, c
         for(;;)
         {
             while((*compar)(&base2[size * c], &base2[size * a]) > 0) 
-            a++; /* Look for one >= middle */
+                a++; /* Look for one >= middle */
             while((*compar)(&base2[size * c], &base2[size * b]) < 0) 
                 b--; /* Look for one <= middle */
             if(a >= b)
@@ -45,12 +45,12 @@ void qsort (void *base, size_t nmemb, size_t size, int (*compar)(const void *, c
                 base2[size * a + i] = base2[size * b + i];
                 base2[size * b + i] = tmp;
             }
-                if(c == a) /* Keep track of middle element */
-                    c = b;
-                else if(c == b)
-                    c = a;
-                a++; /* These two are already sorted */
-                b--;
+            if(c == a) /* Keep track of middle element */
+                c = b;
+            else if(c == b)
+                c = a;
+            a++; /* These two are already sorted */
+            b--;
         } /* a points to first element of right intervall now (b to last of left) */
         b++;
         if(b < nmemb - b) /* do recursion on smaller intervall and iteration on larger one */
