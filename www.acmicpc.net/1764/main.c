@@ -5,18 +5,23 @@
  * only <stdio.h>
  */
 #include <stdio.h>
+//#include <stdlib.h>
+//#include <string.h>
 
 char    A[500000][20];
 char    B[500000][20];
 int     intersection[500000], count = 0;
 
+#ifndef _STRING_H_
 int strcmp(const char *s1, const char *s2)
 {
     while (*s1 == *s2++)
         if (*s1++ == 0) return (0);
     return (*(const unsigned char *)s1 - *(const unsigned char *)(s2 - 1));
 }
+#endif
 
+#ifndef _STDLIB_H_
 void qsort (void *base, size_t nmemb, size_t size, int (*compar)(const void *, const void *))
 {
     char *base2 = (char *)base;
@@ -61,6 +66,7 @@ void qsort (void *base, size_t nmemb, size_t size, int (*compar)(const void *, c
         }
     }
 }
+#endif
 
 int main(int argc, char* argv[])
 {
