@@ -1,11 +1,17 @@
-/**
- * #include <string.h>
- */
+#include <stdio.h>
+//#include <string.h>
+
+#ifndef NULL
+#define NULL 0
+#endif
 
 #ifndef _STRING_H_
 
-#define NULL ( (void *) 0)
-typedef unsigned long size_t;
+typedef unsigned long       size_t;
+typedef unsigned char       u_char;
+typedef unsigned short      u_short;
+typedef unsigned int        u_int;
+typedef unsigned long       u_long;
 
 size_t strlen(str)
     const char *str;
@@ -16,26 +22,25 @@ size_t strlen(str)
     return(s - str);
 }
 
-char * strcpy(char *s1, const char *s2)
+char * strcpy(char *dst, const char *src)
 {
-    char *s = s1;
-    while ((*s++ = *s2++) != 0)
-        ;
-    return (s1);
+    char *s = dst;
+    while ((*s++ = *src++) != 0) ;
+    return (dst);
 }
 
-char * strncpy(char *s1, const char *s2, size_t n)
+char * strncpy(char *dst, const char *src, size_t n)
 {
-    char *s = s1;
-    while (n > 0 && *s2 != '\0') {
-        *s++ = *s2++;
+    char *s = dst;
+    while (n > 0 && *src != '\0') {
+        *s++ = *src++;
         --n;
     }
     while (n > 0) {
         *s++ = '\0';
         --n;
     }
-    return s1;
+    return dst;
 }
 
 char * strcat(char *s1, const char *s2)
@@ -154,6 +159,91 @@ cont:
     /* NOTREACHED */
 }
 
+#define wsize   sizeof(u_int)
+#define wmask   (wsize - 1)
+
+#ifdef BZERO
+#define RETURN  return
+#define VAL 0
+#define WIDEVAL 0
+
+void bzero(dst0, length)
+    void *dst0;
+    register size_t length;
+#else
+#define RETURN  return (dst0)
+#define VAL c0
+#define WIDEVAL c
+
+void * memset(dst0, c0, length)
+    void *dst0;
+    register int c0;
+    register size_t length;
+#endif
+{
+    register size_t t;
+    register u_int c;
+    register u_char *dst;
+
+    dst = dst0;
+    /*
+     * If not enough words, just fill bytes.  A length >= 2 words
+     * guarantees that at least one of them is `complete' after
+     * any necessary alignment.  For instance:
+     *
+     *  |-----------|-----------|-----------|
+     *  |00|01|02|03|04|05|06|07|08|09|0A|00|
+     *            ^---------------------^
+     *       dst         dst+length-1
+     *
+     * but we use a minimum of 3 here since the overhead of the code
+     * to do word writes is substantial.
+     */ 
+    if (length < 3 * wsize) {
+        while (length != 0) {
+            *dst++ = VAL;
+            --length;
+        }
+        RETURN;
+    }
+
+#ifndef BZERO
+    if ((c = (u_char)c0) != 0) {    /* Fill the word. */
+        c = (c << 8) | c;   /* u_int is 16 bits. */
+#if UINT_MAX > 0xffff
+        c = (c << 16) | c;  /* u_int is 32 bits. */
+#endif
+#if UINT_MAX > 0xffffffff
+        c = (c << 32) | c;  /* u_int is 64 bits. */
+#endif
+    }
+#endif
+    /* Align destination by filling in bytes. */
+    if ((t = (int)dst & wmask) != 0) {
+        t = wsize - t;
+        length -= t;
+        do {
+            *dst++ = VAL;
+        } while (--t != 0);
+    }
+
+    /* Fill words.  Length was >= 2*words so we know t >= 1 here. */
+    t = length / wsize;
+    do {
+        *(u_int *)dst = WIDEVAL;
+        dst += wsize;
+    } while (--t != 0);
+
+    /* Mop up trailing bytes, if any. */
+    t = length & wmask;
+    if (t != 0)
+        do {
+            *dst++ = VAL;
+        } while (--t != 0);
+    RETURN;
+}
+
+
 #endif
 
 
@@ -162,6 +252,36 @@ cont:
  */
 int main(int argc, char *argv[])
 {
+#ifdef _STRING_H_
+    printf("#include <string.h>\n");
+#else
+    printf("//#include <string.h>\n");
+#endif
+
+    char a[32] = "Hello, ";
+    char b[32] = "World!";
+    char c[32];
+
+    // base
+    printf("%s%s\n", a, b);
+    // strlen
+    printf("%lu\n", strlen(a));
+    // strcpy
+    strcpy(c, a);
+    printf("%s\n", c);
+    // strncpy
+    strcpy(c, "hello!");        // hello!
+    strncpy(c + 1, "ELL", 3);   // hELLo!
+    printf("%s\n", c);
+    // strcat
+    strcpy(c, a);               // Hello, 
+    strcat(c, b);               // Hello, World!
+    printf("%s\n", c);
+    // strncat
+    strcpy(c, a);               // Hello,
+    strncat(c, b, 3);           // Hello, Wor
+    printf("%s\n", c);
+
     return 0;
 }
 
