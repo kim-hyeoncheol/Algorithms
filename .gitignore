@@ -3,6 +3,7 @@
 *.class
 a.out
 *.bin
+*.o
 
 # Temporary File #
 ##################
