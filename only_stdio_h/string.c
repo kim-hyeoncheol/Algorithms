@@ -22,14 +22,19 @@ size_t strlen(str)
     return(s - str);
 }
 
-char * strcpy(char *dst, const char *src)
+char * strcpy(dst, src)
+    char        *dst;
+    const char  *src;
 {
     char *s = dst;
     while ((*s++ = *src++) != 0) ;
     return (dst);
 }
 
-char * strncpy(char *dst, const char *src, size_t n)
+char * strncpy(dst, src, n)
+    char        *dst;
+    const char  *src;
+    size_t      n;
 {
     char *s = dst;
     while (n > 0 && *src != '\0') {
@@ -43,34 +48,44 @@ char * strncpy(char *dst, const char *src, size_t n)
     return dst;
 }
 
-char * strcat(char *s1, const char *s2)
+char * strcat(dst, src)
+    char        *dst;
+    const char  *src;
 {
-    strcpy(&s1[strlen(s1)], s2);
-    return s1;
+    strcpy(&dst[strlen(dst)], src);
+    return dst;
 }
 
-char * strncat(char *s1, const char *s2, size_t n)
+char * strncat(dst, src, n)
+    char        *dst;
+    const char  *src;
+    size_t      n;
 {
-    unsigned len1 = strlen(s1);
-    unsigned len2 = strlen(s2);
+    unsigned len1 = strlen(dst);
+    unsigned len2 = strlen(src);
 
     if (len2 < n) {
-        strcpy(&s1[len1], s2);
+        strcpy(&dst[len1], src);
     } else {
-        strncpy(&s1[len1], s2, n);
-        s1[len1 + n] = '\0';
+        strncpy(&dst[len1], src, n);
+        dst[len1 + n] = '\0';
     }
-    return s1;
+    return dst;
 }
 
-int strcmp(const char *s1, const char *s2)
+int strcmp(s1, s2)
+    const char  *s1;
+    const char  *s2;
 {
     while (*s1 == *s2++)
         if (*s1++ == 0) return (0);
     return (*(const unsigned char *)s1 - *(const unsigned char *)(s2 - 1));
 }
 
-int strncmp(const char *s1, const char *s2, size_t n)
+int strncmp(s1, s2, n)
+    const char  *s1;
+    const char  *s2;
+    size_t      n;
 {
     for ( ; n > 0; s1++, s2++, --n)
         if (*s1 != *s2)
@@ -80,7 +95,9 @@ int strncmp(const char *s1, const char *s2, size_t n)
     return 0;
 }
 
-char *strchr(const char *s, int c)
+char *strchr(s, c)
+    const char  *s;
+    int         c;
 {
     const char ch = c;
 
@@ -168,7 +185,7 @@ cont:
 #define WIDEVAL 0
 
 void bzero(dst0, length)
-    void *dst0;
+    void            *dst0;
     register size_t length;
 #else
 #define RETURN  return (dst0)
@@ -176,13 +193,13 @@ void bzero(dst0, length)
 #define WIDEVAL c
 
 void * memset(dst0, c0, length)
-    void *dst0;
-    register int c0;
+    void            *dst0;
+    register int    c0;
     register size_t length;
 #endif
 {
     register size_t t;
-    register u_int c;
+    register u_int  c;
     register u_char *dst;
 
     dst = dst0;
@@ -255,7 +272,7 @@ int main(int argc, char *argv[])
 #ifdef _STRING_H_
     printf("#include <string.h>\n");
 #else
-    printf("//#include <string.h>\n");
+    printf("// #include <string.h>\n");
 #endif
 
     char a[32] = "Hello, ";
@@ -263,24 +280,24 @@ int main(int argc, char *argv[])
     char c[32];
 
     // base
-    printf("%s%s\n", a, b);
+    printf("base : %s%s\n", a, b);
     // strlen
-    printf("%lu\n", strlen(a));
+    printf("strlen : %lu\n", strlen(a));
     // strcpy
     strcpy(c, a);
-    printf("%s\n", c);
+    printf("strcpy : %s\n", c);
     // strncpy
     strcpy(c, "hello!");        // hello!
     strncpy(c + 1, "ELL", 3);   // hELLo!
-    printf("%s\n", c);
+    printf("strncpy : %s\n", c);
     // strcat
     strcpy(c, a);               // Hello, 
     strcat(c, b);               // Hello, World!
-    printf("%s\n", c);
+    printf("strcat : %s\n", c);
     // strncat
     strcpy(c, a);               // Hello,
     strncat(c, b, 3);           // Hello, Wor
-    printf("%s\n", c);
+    printf("strncat : %s\n", c);
 
     return 0;
 }
