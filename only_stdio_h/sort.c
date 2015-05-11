@@ -47,6 +47,11 @@ std::sort (numbers, numbers+5, std::greater<int>());    // 내림차순
 std::sort (numbers, numbers+5, std::less<int>());       // 오름차순
  */
 
+int heapsort(void *base, size_t nel, size_t width, int (*compar)(const void *, const void *))
+{
+    return 0;
+}
+         
 int main(int argc, char *argv[])
 {
     return 0;
