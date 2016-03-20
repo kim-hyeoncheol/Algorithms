@@ -1,0 +1,5 @@
+4
+aAb
+abc
+acba
+AaBb
