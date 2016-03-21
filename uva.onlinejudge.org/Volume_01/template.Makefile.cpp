@@ -12,7 +12,7 @@ INPUT = input.txt
 OUTPUT_ACTUAL = output.actual.txt
 OUTPUT_EXPECTED = output.txt
 
-$(OUTPUT_ACTUAL): $(BIN)
+$(OUTPUT_ACTUAL): $(BIN) $(INPUT)
 	./$(BIN) < $(INPUT) > $(OUTPUT_ACTUAL)
 	diff $(OUTPUT_ACTUAL) $(OUTPUT_EXPECTED)
 
